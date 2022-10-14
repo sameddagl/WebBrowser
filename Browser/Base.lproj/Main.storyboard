@@ -1,24 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qjq-k5-wRg">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="F8I-fC-gvQ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="Qjq-k5-wRg" customClass="ViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OIi-k3-P01">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-w9-M3B">
+                                <rect key="frame" x="0.0" y="47" width="390" height="57.666666666666657"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" placeholder="Enter a website or search for something" translatesAutoresizingMaskIntoConstraints="NO" id="cZI-ZW-sLi">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="url"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                        <connections>
+                                            <outlet property="delegate" destination="Qjq-k5-wRg" id="iUq-HH-cxg"/>
+                                        </connections>
+                                    </searchBar>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ck0-9a-H4q">
+                                        <rect key="frame" x="0.0" y="56" width="390" height="2.6666666666666643"/>
+                                    </progressView>
+                                </subviews>
+                            </stackView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjv-Mw-CtC">
+                                <rect key="frame" x="0.0" y="104.66666666666669" width="390" height="656.33333333333326"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvZ-ZY-Faa">
+                                <rect key="frame" x="0.0" y="761" width="390" height="49"/>
+                                <items>
+                                    <barButtonItem title="Back" image="chevron.backward" catalog="system" id="5Bl-Pi-Oxw">
+                                        <connections>
+                                            <action selector="backward:" destination="Qjq-k5-wRg" id="gJ6-ml-LGQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="x6J-PR-Lvg"/>
+                                    <barButtonItem title="Forward" image="chevron.forward" catalog="system" id="jpy-ea-3v0">
+                                        <connections>
+                                            <action selector="forward:" destination="Qjq-k5-wRg" id="Uxf-SS-0Sw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JbZ-hy-1TU"/>
+                                    <barButtonItem title="Home" image="homekit" catalog="system" id="eM4-wA-rY0">
+                                        <connections>
+                                            <action selector="homeButtonPressed:" destination="Qjq-k5-wRg" id="WbH-XT-430"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="K0g-10-8CI"/>
+                                    <barButtonItem title="Reload" image="arrow.clockwise" catalog="system" id="3OK-Fb-MMG">
+                                        <connections>
+                                            <action selector="reload:" destination="Qjq-k5-wRg" id="RMp-u9-ioc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xWU-6w-2Ix"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LvZ-ZY-Faa" firstAttribute="trailing" secondItem="xWU-6w-2Ix" secondAttribute="trailing" id="7UP-zn-yTg"/>
+                            <constraint firstItem="Gjv-Mw-CtC" firstAttribute="leading" secondItem="xWU-6w-2Ix" secondAttribute="leading" id="Hv0-8I-RWt"/>
+                            <constraint firstItem="LvZ-ZY-Faa" firstAttribute="leading" secondItem="xWU-6w-2Ix" secondAttribute="leading" id="Vra-Hu-NZH"/>
+                            <constraint firstItem="Gjv-Mw-CtC" firstAttribute="trailing" secondItem="xWU-6w-2Ix" secondAttribute="trailing" id="gTN-tf-NaI"/>
+                            <constraint firstItem="Moe-w9-M3B" firstAttribute="trailing" secondItem="xWU-6w-2Ix" secondAttribute="trailing" id="hmO-gc-ONW"/>
+                            <constraint firstItem="xWU-6w-2Ix" firstAttribute="bottom" secondItem="LvZ-ZY-Faa" secondAttribute="bottom" id="jjU-BG-7Ai"/>
+                            <constraint firstItem="Gjv-Mw-CtC" firstAttribute="top" secondItem="Moe-w9-M3B" secondAttribute="bottom" id="lUc-7d-xq6"/>
+                            <constraint firstItem="Moe-w9-M3B" firstAttribute="leading" secondItem="xWU-6w-2Ix" secondAttribute="leading" id="lx6-t2-1ef"/>
+                            <constraint firstItem="LvZ-ZY-Faa" firstAttribute="top" secondItem="Gjv-Mw-CtC" secondAttribute="bottom" id="rMe-iG-sAf"/>
+                            <constraint firstItem="Moe-w9-M3B" firstAttribute="top" secondItem="xWU-6w-2Ix" secondAttribute="top" id="wTl-5h-Xo9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="5Bl-Pi-Oxw" id="Yfw-vz-mvj"/>
+                        <outlet property="forwardButton" destination="jpy-ea-3v0" id="atM-lA-t9a"/>
+                        <outlet property="progressView" destination="ck0-9a-H4q" id="U2u-fi-ZQP"/>
+                        <outlet property="reloadButton" destination="3OK-Fb-MMG" id="Xan-N9-Hf9"/>
+                        <outlet property="searchBar" destination="cZI-ZW-sLi" id="C4G-tC-JBg"/>
+                        <outlet property="webView" destination="Gjv-Mw-CtC" id="6eh-RR-1sg"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qto-ls-h2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="249" y="11"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
+        <image name="homekit" catalog="system" width="128" height="104"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
